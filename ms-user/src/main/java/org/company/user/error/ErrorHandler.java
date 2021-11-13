@@ -1,15 +1,17 @@
 package org.company.user.error;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.company.user.error.exception.DuplicateRecordException;
 import org.company.user.error.exception.InvalidInputException;
 import org.company.user.error.exception.RecordNotFoundException;
 import org.company.user.error.model.ErrorResponse;
 import org.company.user.util.WebUtils;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -75,6 +77,25 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({RecordNotFoundException.class})
     public ErrorResponse handleRecordNotFoundException(RecordNotFoundException ex) {
         addErrorLog(ex.getCode(), ex.getMessage(), "RecordNotFoundException");
+        return new ErrorResponse(
+                webUtils.getLogId(),
+                ex.getCode(),
+                (ex.getMessage()));
+    }
+
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler({AccessDeniedException.class})
+    public ErrorResponse handleAccessDeniedException(AccessDeniedException ex) {
+        addErrorLog(HttpStatus.FORBIDDEN.value(), ex.getMessage(), "AccessDeniedException");
+        return new ErrorResponse(
+                webUtils.getLogId(),
+                HttpStatus.FORBIDDEN.value(),
+                (ex.getMessage()));
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({DuplicateRecordException.class})
+    public ErrorResponse handleDuplicateRecordException(DuplicateRecordException ex) {
+        addErrorLog(ex.getCode(), ex.getMessage(), "DuplicateRecordException");
         return new ErrorResponse(
                 webUtils.getLogId(),
                 ex.getCode(),

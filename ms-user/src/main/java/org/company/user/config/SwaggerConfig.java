@@ -1,8 +1,8 @@
 package org.company.user.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.company.user.config.properties.ApplicationProperties;
 import org.company.user.util.SwaggerUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

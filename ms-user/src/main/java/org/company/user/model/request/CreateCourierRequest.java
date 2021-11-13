@@ -1,11 +1,11 @@
-package org.company.user.model;
+package org.company.user.model.request;
 
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
-public class CreateCustomerRequest {
+public class CreateCourierRequest {
 
     private String firstName;
     private String lastName;
@@ -15,5 +15,6 @@ public class CreateCustomerRequest {
     private String password;
     private String address;
     private String phoneNumber;
+    private String location;
 
 }
