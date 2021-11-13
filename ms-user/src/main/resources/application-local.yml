@@ -1,5 +1,5 @@
 server:
-  port: 9002
+  port: 9001
   servlet:
     context-path: /
   tomcat:
@@ -7,8 +7,6 @@ server:
       enabled: true
 
 spring:
-  application:
-    name: ms-user
   datasource:
     url: jdbc:h2:mem:userDB
     driver-class-name: org.h2.Driver
@@ -25,7 +23,17 @@ spring:
       path: /h2
       settings:
         trace: false
-        web-allow-others: false
+        web-allow-others: true
+
+keycloak:
+  realm: delivery-system-realm
+  auth-server-url: http://192.168.99.100:8080/auth
+  ssl-required: external
+  resource: ms-user
+  credentials:
+    secret: 50dba9f1-39fb-4762-86c8-eeb590a461cf
+  use-resource-role-mappings: true
+  bearer-only: true
 
 logging:
   level:
