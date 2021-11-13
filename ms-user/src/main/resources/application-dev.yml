@@ -1,0 +1,32 @@
+server:
+  port: 9002
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      enabled: true
+
+spring:
+  application:
+    name: ms-user
+
+logging:
+  level:
+    ROOT: INFO
+    az.company.user: DEBUG
+
+application:
+  swagger:
+    base-package: "org.company.user.controller"
+    paths: "/.*"
+    apiInfo:
+      version: 1.0
+      title: "User REST API"
+      description: "Spring Boot REST API for User"
+      termsOfServiceUrl:
+      license: "Apache License Version 2.0"
+      licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+      contact:
+        name: "Elchin Gasimov, LinkedIn: /in/egasimov"
+        url: "https://YOUR_ADDRESS/"
+        email: "egasimov0@gmail.com"
