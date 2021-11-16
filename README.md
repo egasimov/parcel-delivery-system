@@ -1,6 +1,6 @@
 ### MS-USER
 
-<img src="./doc/MS-USER-SWAGGER-UI.PNG" width="128"/>
+<img src="./doc/MS-USER-SWAGGER-UI.PNG" width="1000" height="600"/>
 
 ### Create Customer Scenario
 
