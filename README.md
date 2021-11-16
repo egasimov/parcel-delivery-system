@@ -1,6 +1,15 @@
+## Parcel Delivery System
+Parcel Delivery System is intended to demonstration of project which is build on microservices.
+
+Architecture of System described below.
+<img src="./doc/Parcel-Delivery-SystemV1.2.drawio.png" width="1000" height="900"/>
+
+
+----
+
 ### MS-USER
 
-<img src="./doc/MS-USER-SWAGGER-UI.PNG" width="1000" height="600"/>
+<img src="./doc/MS-USER-SWAGGER-UI.PNG" width="1000" height="700"/>
 
 ### Create Customer Scenario
 
