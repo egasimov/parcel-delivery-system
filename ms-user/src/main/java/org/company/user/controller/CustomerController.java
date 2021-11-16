@@ -29,21 +29,21 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_GET_ANY_CUSTOMER_INFO)
     @GetMapping("/username/{username}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity getCustomer(@PathVariable String username) {
         return ResponseEntity.ok(customerService.findCustomer(username));
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_USER_CUSTOMER)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_GET_SELF_CUSTOMER_INFO)
     @GetMapping("/info")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity info() {
         return ResponseEntity.ok(customerService.info());
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_GET_ALL_CUSTOMER_INFO)
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<CustomerDto>> getAllCustomers() {
@@ -56,7 +56,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.createCustomer(createCustomerData));
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_REMOVE_ANY_CUSTOMER)
     @DeleteMapping("/username/{username}")
     public ResponseEntity deleteCustomer(@PathVariable String username) {
         customerService.removeCustomer(username);

@@ -11,12 +11,18 @@ import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.web.servlet.function.RequestPredicates.GET;
 import static org.springframework.web.servlet.function.RouterFunctions.route;
@@ -30,6 +36,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @Import({BeanValidatorPluginsConfiguration.class})
 public class SwaggerConfig {
+
+    public static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final ApplicationProperties.Swagger properties;
 
@@ -48,6 +56,8 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage(properties.getBasePackage()))
                 .paths(regex(properties.getPaths()))
                 .build()
+                .securityContexts(Arrays.asList(securityContext()))
+                .securitySchemes(Arrays.asList(apiKey()))
                 .apiInfo(SwaggerUtil.convertToSpringFoxApiInfo(properties.getApiInfo()))
                 .forCodeGeneration(true);
 
@@ -68,4 +78,19 @@ public class SwaggerConfig {
         return route(GET("/swagger*"), req ->
                 ServerResponse.temporaryRedirect(URI.create("swagger-ui/")).build());
     }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder().securityReferences(defaultAuth()).build();
+    }
+
+    private ApiKey apiKey() {
+        return new ApiKey(AUTHORIZATION_HEADER, "JWT", "header");
+    }
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return Arrays.asList(new SecurityReference(AUTHORIZATION_HEADER, authorizationScopes));
+    }
+
 }

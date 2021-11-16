@@ -42,8 +42,8 @@ public class CourierServiceImpl implements CourierService {
                 .username(requestData.getUsername())
                 .password(requestData.getPassword())
                 .enabled(Boolean.TRUE)
-                .userClientRoles(List.of(RoleConstants.ROLE_CLIENT_USER_COURIER))
-                .userRealmRoles(List.of(RoleConstants.ROLE_REALM_USER_COURIER))
+                .userClientRoles(List.of(RoleConstants.DefaultRoles.CLIENT_COURIER_ROLES))
+                .userRealmRoles(List.of(RoleConstants.DefaultRoles.REALM_COURIER_ROLES))
                 .build();
 
         userService.createUser(createUserRequest);

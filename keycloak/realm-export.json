@@ -46,14 +46,21 @@
   "roles": {
     "realm": [
       {
-        "id": "72705056-be82-491e-a4f9-167ed2753139",
-        "name": "app-user-courier",
-        "description": "Application User-courier permissions",
+        "id": "9398ed0d-bcb2-411d-b031-ab720417d108",
+        "name": "ROLE_APP_ADMIN",
         "composite": true,
         "composites": {
           "client": {
             "ms-user": [
-              "user-courier"
+              "ROLE_GET_ALL_COURIER_INFO",
+              "ROLE_GET_ANY_CUSTOMER_INFO",
+              "ROLE_CREATE_COURIER",
+              "ROLE_UPDATE_ANY_COURIER_INFO",
+              "ROLE_REMOVE_ANY_COURIER",
+              "ROLE_REMOVE_ANY_CUSTOMER",
+              "ROLE_UPDATE_ANY_CUSTOMER_INFO",
+              "ROLE_GET_ALL_CUSTOMER_INFO",
+              "ROLE_GET_ANY_COURIER_INFO"
             ]
           }
         },
@@ -92,22 +99,6 @@
         "attributes": {}
       },
       {
-        "id": "9f1f3733-7481-4b31-9992-3470f1e38cf3",
-        "name": "app-user-customer",
-        "description": "Application User-Customer Permissions",
-        "composite": true,
-        "composites": {
-          "client": {
-            "ms-user": [
-              "user-customer"
-            ]
-          }
-        },
-        "clientRole": false,
-        "containerId": "delivery-system-realm",
-        "attributes": {}
-      },
-      {
         "id": "9ce90283-d963-4717-bcc5-d0d8264b2920",
         "name": "uma_authorization",
         "description": "${role_uma_authorization}",
@@ -117,14 +108,32 @@
         "attributes": {}
       },
       {
-        "id": "6e2491aa-5e21-4c12-a21f-1877efaa2493",
-        "name": "app-admin",
-        "description": "Application admin permissions",
+        "id": "bc1f5753-c258-4de3-bbfc-1a39beee0efb",
+        "name": "ROLE_APP_USER_COURIER",
         "composite": true,
         "composites": {
           "client": {
             "ms-user": [
-              "admin"
+              "ROLE_REMOVE_SELF_COURIER",
+              "ROLE_UPDATE_SELF_COURIER_INFO",
+              "ROLE_GET_SELF_COURIER_INFO"
+            ]
+          }
+        },
+        "clientRole": false,
+        "containerId": "delivery-system-realm",
+        "attributes": {}
+      },
+      {
+        "id": "e5b20852-cb59-4593-a452-80aff9be922b",
+        "name": "ROLE_APP_USER_CUSTOMER",
+        "composite": true,
+        "composites": {
+          "client": {
+            "ms-user": [
+              "ROLE_REMOVE_SELF_CUSTOMER",
+              "ROLE_UPDATE_SELF_CUSTOMER_INFO",
+              "ROLE_GET_SELF_CUSTOMER_INFO"
             ]
           }
         },
@@ -349,6 +358,54 @@
       "security-admin-console": [],
       "ms-user": [
         {
+          "id": "4ceb9f7c-5150-473a-a24b-0ece1be7f0f8",
+          "name": "ROLE_REMOVE_SELF_COURIER",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "0c234f65-bb16-4b41-9fd0-633e74e923f3",
+          "name": "ROLE_UPDATE_SELF_COURIER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "a9371eb7-3253-4404-88b4-ab6063049e35",
+          "name": "ROLE_CREATE_CUSTOMER",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "bba7cb05-0bf5-4fdd-896a-dae645baf8e0",
+          "name": "ROLE_UPDATE_ANY_CUSTOMER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "46773ed0-2bfb-48b9-bb8f-e707c2740e9a",
+          "name": "ROLE_GET_ALL_CUSTOMER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "bd7da2b7-106f-435a-9169-daefacc88330",
+          "name": "ROLE_GET_ANY_COURIER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
           "id": "39981dbb-7e40-4727-8eed-da4d1e3c3f52",
           "name": "uma_protection",
           "composite": false,
@@ -357,27 +414,80 @@
           "attributes": {}
         },
         {
-          "id": "11f3bc2b-0927-4eb6-a8a4-0f69fa94a1dd",
-          "name": "user-courier",
-          "description": "To authorize user/courier permissions",
+          "id": "d574db1c-24d2-4dae-bdad-7615f9b4f947",
+          "name": "ROLE_GET_ALL_COURIER_INFO",
           "composite": false,
           "clientRole": true,
           "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
           "attributes": {}
         },
         {
-          "id": "a0b607b6-b1dd-4a6f-a0e1-51ac3dcfc759",
-          "name": "user-customer",
-          "description": "To authorize user/customer permissions",
+          "id": "0abb633d-ac86-4ccc-8ad9-1b13b38178ae",
+          "name": "ROLE_GET_ANY_CUSTOMER_INFO",
           "composite": false,
           "clientRole": true,
           "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
           "attributes": {}
         },
         {
-          "id": "36585892-e749-4eb2-8f09-4cf319dca15a",
-          "name": "admin",
-          "description": "To authorize admin permissions for API",
+          "id": "415f9c1d-23e9-4c2a-9167-d666759841c0",
+          "name": "ROLE_CREATE_COURIER",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "359eca34-3662-4829-9475-7ded7ad097d5",
+          "name": "ROLE_REMOVE_ANY_COURIER",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "838084b3-fb37-4642-8d7d-d93528b6d89f",
+          "name": "ROLE_REMOVE_ANY_CUSTOMER",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "e21f0d7c-c867-4a86-ae92-84d3df1b74f8",
+          "name": "ROLE_REMOVE_SELF_CUSTOMER",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "eedaf392-71cb-4fba-9526-0ae442620e10",
+          "name": "ROLE_UPDATE_ANY_COURIER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "c8fe2701-ec41-4839-a8dd-204d35f6dd9b",
+          "name": "ROLE_UPDATE_SELF_CUSTOMER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "c01ab7e0-c943-4748-8219-1fe948ff6303",
+          "name": "ROLE_GET_SELF_COURIER_INFO",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
+          "attributes": {}
+        },
+        {
+          "id": "a86671cc-c24b-4247-a586-0b5e0dfec94b",
+          "name": "ROLE_GET_SELF_CUSTOMER_INFO",
           "composite": false,
           "clientRole": true,
           "containerId": "7c0529a4-22c3-4b9b-a9f0-e135105a92a6",
@@ -539,6 +649,20 @@
         "default-roles-delivery-system-realm"
       ],
       "clientRoles": {
+        "realm-management": [
+          "manage-clients",
+          "query-clients",
+          "view-users",
+          "create-client",
+          "manage-users",
+          "manage-realm",
+          "manage-identity-providers",
+          "realm-admin",
+          "manage-events",
+          "impersonation",
+          "manage-authorization",
+          "query-realms"
+        ],
         "ms-user": [
           "uma_protection"
         ]

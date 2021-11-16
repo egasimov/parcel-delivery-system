@@ -5,6 +5,14 @@ volumes:
     driver: local
 
 services:
+#  postgres4customers:
+#    image: postgres
+#    environment:
+#      POSTGRES_DB: customerDB
+#      POSTGRES_USER: superadmin
+#      POSTGRES_PASSWORD: admin123
+#    ports:
+#      - "5432:5432"
   postgres:
     image: postgres
     volumes:

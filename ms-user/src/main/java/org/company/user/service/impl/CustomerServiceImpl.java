@@ -46,8 +46,8 @@ public class CustomerServiceImpl implements CustomerService {
                 .username(requestData.getUsername())
                 .password(requestData.getPassword())
                 .enabled(Boolean.TRUE)
-                .userClientRoles(List.of(RoleConstants.ROLE_CLIENT_USER_CUSTOMER))
-                .userRealmRoles(List.of(RoleConstants.ROLE_REALM_USER_CUSTOMER))
+                .userClientRoles(List.of(RoleConstants.DefaultRoles.CLIENT_CUSTOMER_ROLES))
+                .userRealmRoles(List.of(RoleConstants.DefaultRoles.REALM_CUSTOMER_ROLES))
                 .build();
 
         userService.createUser(createUserRequest);
