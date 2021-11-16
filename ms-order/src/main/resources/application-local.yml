@@ -1,0 +1,43 @@
+server:
+  port: 9002
+  servlet:
+    context-path: /
+  tomcat:
+    accesslog:
+      enabled: true
+
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:userDB
+#    driver-class-name: org.h2.Driver
+#    data-username: sa
+#    data-password:
+#    platform: org.hibernate.dialect.H2Dialect
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2
+#      settings:
+#        trace: false
+#        web-allow-others: true
+
+#keycloak:
+#  realm: delivery-system-realm
+#  auth-server-url: http://192.168.99.100:8080/auth
+#  ssl-required: external
+#  resource: ms-order
+#  credentials:
+#    secret: 50dba9f1-39fb-4762-86c8-eeb590a461cf
+#  use-resource-role-mappings: true
+#  bearer-only: true
+
+logging:
+  level:
+    ROOT: INFO
+    org.company.order: DEBUG
+
+

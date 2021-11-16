@@ -1,4 +1,5 @@
 rootProject.name = 'parcel-delivery-system'
 
 include 'ms-user'
+include 'ms-order'
 
