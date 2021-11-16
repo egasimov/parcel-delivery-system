@@ -26,35 +26,35 @@ public class CourierController {
 
     private final CourierService courierService;
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_GET_ANY_COURIER_INFO)
     @GetMapping("/username/{username}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity getCourier(@PathVariable String username) {
         return ResponseEntity.ok(courierService.findCourier(username));
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_USER_COURIER)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_GET_SELF_COURIER_INFO)
     @GetMapping("/info")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity info() {
         return ResponseEntity.ok(courierService.info());
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_GET_ALL_COURIER_INFO)
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<CourierDto>> getAllCouriers() {
         return ResponseEntity.ok(courierService.findAllCouriers());
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_CREATE_COURIER)
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity createCourier(@RequestBody CreateCourierRequest createCourierData) {
         return ResponseEntity.ok(courierService.createCourier(createCourierData));
     }
 
-    @RolesAllowed(RoleConstants.ROLE_CLIENT_ADMIN)
+    @RolesAllowed(RoleConstants.ClientApp.ROLE_REMOVE_ANY_COURIER)
     @DeleteMapping("/username/{username}")
     public ResponseEntity deleteCustomer(@PathVariable String username) {
         courierService.removeCourier(username);
