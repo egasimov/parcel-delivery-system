@@ -1,12 +1,18 @@
 package org.company.order.application.in.query;
 
+import org.company.order.application.views.ExtendedOrderView;
+import org.company.order.application.views.SimpleOrderView;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public interface ViewOrderQuery {
-    Object queryByOrderUUID(String orderUUID);
 
-    List<Object> queryAllOrdersOfCourier(String courierID, LocalDate from, LocalDate to);
+    SimpleOrderView queryBySimpleOrderViewUUID(String orderUUID);
 
-    List<Object> queryAllOrdersOfCustomer(String customerID, LocalDate from, LocalDate to);
+    ExtendedOrderView queryByExtendedOrderViewUUID(String orderUUID);
+
+    List<SimpleOrderView> queryAllSimpleOrderViewOfOrderer(String courierID, LocalDate from, LocalDate to);
+
+    List<SimpleOrderView> queryAllSimpleOrderViewOfCourier(String customerID, LocalDate from, LocalDate to);
 }

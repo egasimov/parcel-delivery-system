@@ -6,24 +6,13 @@ server:
     accesslog:
       enabled: true
 
-#spring:
-#  datasource:
-#    url: jdbc:h2:mem:userDB
-#    driver-class-name: org.h2.Driver
-#    data-username: sa
-#    data-password:
-#    platform: org.hibernate.dialect.H2Dialect
-#  jpa:
-#    hibernate:
-#      ddl-auto: create-drop
-#    show-sql: true
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2
-#      settings:
-#        trace: false
-#        web-allow-others: true
+spring:
+  data:
+    mongodb:
+      database: orderDB
+      host: 192.168.99.100
+      port: 27017
+      auto-index-creation: true
 
 #keycloak:
 #  realm: delivery-system-realm
@@ -39,5 +28,7 @@ logging:
   level:
     ROOT: INFO
     org.company.order: DEBUG
+    org.mongodb.driver: DEBUG
+
 
 
