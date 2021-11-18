@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: ms-order
+
+  profiles:
+    active: local
+
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: [ "env", "health", "info" ]
+
+application:
+  swagger:
+    base-package: "org.company.order.adapter.in.web"
+    paths: "/.*"
+    apiInfo:
+      version: 1.0
+      title: "MS-Order REST API"
+      description: "Spring Boot REST API for Order"
+      termsOfServiceUrl:
+      license: "Apache License Version 2.0"
+      licenseUrl: "https://www.apache.org/licenses/LICENSE-2.0"
+      contact:
+        name: "Elchin Gasimov, LinkedIn: /in/egasimov"
+        url: "https://YOUR_ADDRESS/"
+        email: "egasimov0@gmail.com"
